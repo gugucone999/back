@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+ name: back-deployment
+ namespace: ljh-dev
+spec:
+ selector:
+   matchLabels:
+    type: app
+ replicas: 1
+ template:
+   metadata:
+     labels:
+       type: app
+   spec:
+    containers:
+    - name: container
+      image: gugucone/back:latest
+      envFrom:
+      - configMapRef:
+          name: backend-cm
+      ports:
+      - containerPort: 8000

@@ -15,7 +15,7 @@ spec:
    spec:
     containers:
     - name: container
-      image: gugucone/back:latest\
+      image: gugucone/back:latest
       command: ["/bin/sh", "-ec", "python manage.py migrate && gunicorn config.wsgi --bind 0.0.0.0:8000"]
       envFrom:
       - configMapRef:
